@@ -11,3 +11,20 @@ panic = "abort"
 
 [profile.release]
 panic = "abort"
+
+# 目标架构配置
+[package.metadata.bootimage]
+default-target = "aarch64-unknown-none"
+targets = ["aarch64-unknown-none", "riscv64gc-unknown-none-elf"]
+
+# RISC-V 目标配置
+[target.riscv64gc-unknown-none-elf]
+rustflags = [
+    "-C", "link-arg=-Tlinker-riscv64.ld",
+]
+
+# ARM64 目标配置
+[target.aarch64-unknown-none]
+rustflags = [
+    "-C", "link-arg=-Tlinker.ld",
+]
