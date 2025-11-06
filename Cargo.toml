@@ -1,0 +1,13 @@
+[package]
+name = "myos"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+spin = "0.9"  # 必须添加！
+# 无标准库
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
